@@ -1,13 +1,7 @@
 # ✨Just For Backup
 
-For personal use
+I use this for minimal instalation in Debian Netinstall and Archlinux
 
-to easy install from minimal install like debian or archinstal
-
-im save this script for me
-thanks you
-
-for me
 _______________________
 
 ✨✨✨✨
