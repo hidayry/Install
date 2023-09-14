@@ -3,31 +3,31 @@
 set -e  # Exit if any command fails
 
 #Run apt
-sudo apt install xorg wget alacritty dmenu luarocks lua5.3 liblua5.3-dev || { echo "Error: Failed luarocks"; exit 1; }
+sudo apt install xorg wget alacritty dmenu luarocks lua5.3 liblua5.3-dev || { echo "Error: Failed to install luarocks"; exit 1; }
 echo "Installation luarocks successfully."
 
 # Run apt
-sudo apt install awesome bspwm polybar sxhkd brightnessctl dunst rofi lsd jq policykit-1-gnome git playerctl mpd ncmpcpp geany ranger mpc picom xdotool feh ueberzug maim pamixer libwebp-dev xdg-user-dirs webp-pixbuf-loader fonts-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting thunar thunar-volman thunar-archive-plugin gvfs gvfs-backends engrampa tint2 dmenu pulseaudio alsa-utils firefox-esr xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk tumbler ntfs-3g lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings network-manager network-manager-gnome pavucontrol plymouth plymouth-themes qt5ct adwaita-qt gpick neofetch xdg-utils python-is-python3 python3-gi gir1.2-nm-1.0 duf libglib2.0-bin nala btop ncdu bat timeshift inotify-tools aptitude exa wmctrl acpid xclip scrot acpi playerctl mpdris2 libplayerctl-dev gir1.2-playerctl-2.0 mpv lxapperience gparted ripgrep converseen bc fd-find build-essential libxft-dev libharfbuzz-dev libgd-dev iwd python3-venv libnm-dev grub-customizer light simplescreenrecorder apt-utils dialog android-sdk-platform-tools gtkhash fonts-roboto libxinerama-dev libxinerama-dev xinput inotify-tools potrace || { echo "Error: Failed awesome/bspwm"; exit 1; }
+sudo apt install awesome bspwm polybar sxhkd brightnessctl dunst rofi lsd jq policykit-1-gnome git playerctl mpd ncmpcpp geany ranger mpc picom xdotool feh ueberzug maim pamixer libwebp-dev xdg-user-dirs webp-pixbuf-loader fonts-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting thunar thunar-volman thunar-archive-plugin gvfs gvfs-backends engrampa tint2 dmenu pulseaudio alsa-utils firefox-esr xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk tumbler ntfs-3g lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings network-manager network-manager-gnome pavucontrol plymouth plymouth-themes qt5ct adwaita-qt gpick neofetch xdg-utils python-is-python3 python3-gi gir1.2-nm-1.0 duf libglib2.0-bin nala btop ncdu bat timeshift inotify-tools aptitude exa wmctrl acpid xclip scrot acpi playerctl mpdris2 libplayerctl-dev gir1.2-playerctl-2.0 mpv lxapperience gparted ripgrep converseen bc fd-find build-essential libxft-dev libharfbuzz-dev libgd-dev iwd python3-venv libnm-dev grub-customizer light simplescreenrecorder apt-utils dialog android-sdk-platform-tools gtkhash fonts-roboto libxinerama-dev libxinerama-dev xinput inotify-tools potrace || { echo "Error: Failed to install awesome/bspwm"; exit 1; }
 echo "Installation awesome/bspwm successfully."
 
 # bspwm
-install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc || { echo "Error: Failed bspwmrc"; exit 1; }
+install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc || { echo "Error: Failed to move bspwmrc"; exit 1; }
 echo "Installation bspwmrc successfully."
 
 #sxhkd
-install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc || { echo "Error: Failed sxhkdrc"; exit 1; }
+install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc || { echo "Error: Failed to move sxhkdrc"; exit 1; }
 echo "Installation sxhkdrc successfully."
 
 # Enable the LightDM service
-sudo systemctl enable lightdm || { echo "Error: Failed lightdm"; exit 1; }
+sudo systemctl enable lightdm || { echo "Error: Failed enable lightdm"; exit 1; }
 echo "enable lightdm successfully."
 
 # Enable the MPD service for the current user
-systemctl --user enable mpd || { echo "Error: Failed mpd"; exit 1; }
+systemctl --user enable mpd || { echo "Error: Failed enable mpd"; exit 1; }
 echo "enable mpd successfully."
 
 #Ohmyzsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" || { echo "Error: Failed ohmyzsh"; exit 1; }
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" || { echo "Error: Failed to install ohmyzsh"; exit 1; }
 echo "Installation ohmyzsh successfully."
 
 # greenclip
@@ -37,10 +37,10 @@ sudo chmod +x /usr/bin/greenclip || { echo "Error: Failed chmod greenclip"; exit
 echo "Installation greenclip  successfully."
 
 # lazygit
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') || { echo "Error: Failed get LAZYGIT_VERSION"; exit 1; }
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" || { echo "Error: Failed clone lazygit"; exit 1; }
+tar xf lazygit.tar.gz lazygit || { echo "Error: Failed tar xf lazygit.tar.gz lazygit"; exit 1; }
+sudo install lazygit /usr/local/bin/ || { echo "Error: Failed install lazygit"; exit 1; }
 echo "Installation lazygit successfully."
 
 # Add QT_QPA_PLATFORMTHEME to /etc/environment
