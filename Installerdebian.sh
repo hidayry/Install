@@ -3,37 +3,37 @@
 set -e  # Exit if any command fails
 
 #Run apt
-sudo apt install xorg wget alacritty dmenu luarocks lua5.3 liblua5.3-dev
+sudo apt install xorg wget alacritty dmenu luarocks lua5.3 liblua5.3-dev || { echo "Error: Failed luarocks"; exit 1; }
 echo "Installation luarocks successfully."
 
 # Run apt
-sudo apt install awesome bspwm polybar sxhkd brightnessctl dunst rofi lsd jq policykit-1-gnome git playerctl mpd ncmpcpp geany ranger mpc picom xdotool feh ueberzug maim pamixer libwebp-dev xdg-user-dirs webp-pixbuf-loader fonts-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting thunar thunar-volman thunar-archive-plugin gvfs gvfs-backends engrampa tint2 dmenu pulseaudio alsa-utils firefox-esr xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk tumbler ntfs-3g lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings network-manager network-manager-gnome pavucontrol plymouth plymouth-themes qt5ct adwaita-qt gpick neofetch xdg-utils python-is-python3 python3-gi gir1.2-nm-1.0 duf libglib2.0-bin nala btop ncdu bat timeshift inotify-tools aptitude exa wmctrl acpid xclip scrot acpi playerctl mpdris2 libplayerctl-dev gir1.2-playerctl-2.0 mpv lxapperience gparted ripgrep converseen bc fd-find build-essential libxft-dev libharfbuzz-dev libgd-dev iwd python3-venv libnm-dev grub-customizer light simplescreenrecorder apt-utils dialog android-sdk-platform-tools gtkhash fonts-roboto libxinerama-dev libxinerama-dev xinput inotify-tools potrace
+sudo apt install awesome bspwm polybar sxhkd brightnessctl dunst rofi lsd jq policykit-1-gnome git playerctl mpd ncmpcpp geany ranger mpc picom xdotool feh ueberzug maim pamixer libwebp-dev xdg-user-dirs webp-pixbuf-loader fonts-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting thunar thunar-volman thunar-archive-plugin gvfs gvfs-backends engrampa tint2 dmenu pulseaudio alsa-utils firefox-esr xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk tumbler ntfs-3g lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings network-manager network-manager-gnome pavucontrol plymouth plymouth-themes qt5ct adwaita-qt gpick neofetch xdg-utils python-is-python3 python3-gi gir1.2-nm-1.0 duf libglib2.0-bin nala btop ncdu bat timeshift inotify-tools aptitude exa wmctrl acpid xclip scrot acpi playerctl mpdris2 libplayerctl-dev gir1.2-playerctl-2.0 mpv lxapperience gparted ripgrep converseen bc fd-find build-essential libxft-dev libharfbuzz-dev libgd-dev iwd python3-venv libnm-dev grub-customizer light simplescreenrecorder apt-utils dialog android-sdk-platform-tools gtkhash fonts-roboto libxinerama-dev libxinerama-dev xinput inotify-tools potrace || { echo "Error: Failed awesome/bspwm"; exit 1; }
 echo "Installation awesome/bspwm successfully."
 
 # bspwm
-install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc || { echo "Error: Failed bspwmrc"; exit 1; }
 echo "Installation bspwmrc successfully."
 
 #sxhkd
-install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc || { echo "Error: Failed sxhkdrc"; exit 1; }
 echo "Installation sxhkdrc successfully."
 
 # Enable the LightDM service
-sudo systemctl enable lightdm
+sudo systemctl enable lightdm || { echo "Error: Failed lightdm"; exit 1; }
 echo "enable lightdm successfully."
 
 # Enable the MPD service for the current user
-systemctl --user enable mpd
+systemctl --user enable mpd || { echo "Error: Failed mpd"; exit 1; }
 echo "enable mpd successfully."
 
 #Ohmyzsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" || { echo "Error: Failed ohmyzsh"; exit 1; }
 echo "Installation ohmyzsh successfully."
 
 # greenclip
-wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
-sudo mv greenclip /usr/bin/
-sudo chmod +x /usr/bin/greenclip
+wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip || { echo "Error: Failed clone greenclip"; exit 1; }
+sudo mv greenclip /usr/bin/ || { echo "Error: Failed mv greenclip"; exit 1; }
+sudo chmod +x /usr/bin/greenclip || { echo "Error: Failed chmod greenclip"; exit 1; }
 echo "Installation greenclip  successfully."
 
 # lazygit
@@ -44,18 +44,18 @@ sudo install lazygit /usr/local/bin
 echo "Installation lazygit successfully."
 
 # Add QT_QPA_PLATFORMTHEME to /etc/environment
-sudo sh -c 'echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment'
+sudo sh -c 'echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment' || { echo "Error: Failed QT_QPA_PLATFORMTHEME"; exit 1; }
 echo "QT_QPA_PLATFORMTHEME=qt5ct successfully."
 
 # Set the Plymouth default theme to "spinner"
-/usr/sbin/plymouth-set-default-theme -R spinner
+/usr/sbin/plymouth-set-default-theme -R spinner || { echo "Error: Failed plymouth-set-default-theme"; exit 1; }
 echo "Set the Plymouth default theme successfully."
 
 # networkmanager_dmenu
-git clone https://github.com/firecat53/networkmanager-dmenu.git
-cd networkmanager-dmenu || exit 1
-chmod +x networkmanager_dmenu.desktop
-sudo mv networkmanager_dmenu.desktop /usr/share/applications/ || exit 1
-chmod +x networkmanager_dmenu
-sudo mv networkmanager_dmenu /usr/bin/ || exit 1
+git clone https://github.com/firecat53/networkmanager-dmenu.git || { echo "Error: Failed clone networkmanager-dmenu"; exit 1; }
+cd networkmanager-dmenu || { echo "Error: Failed cd networkmanager-dmenu"; exit 1; }
+chmod +x networkmanager_dmenu.desktop || { echo "Error: Failed chmod networkmanager-dmenu.desktop"; exit 1; }
+sudo mv networkmanager_dmenu.desktop /usr/share/applications/ || { echo "Error: Failed mv networkmanager-dmenu.desktop"; exit 1; }
+chmod +x networkmanager_dmenu || { echo "Error: Failed chmod networkmanager-dmenu"; exit 1; }
+sudo mv networkmanager_dmenu /usr/bin/ || { echo "Error: Failed mv networkmanager-dmenu"; exit 1; }
 echo "Installation networkmanager_dmenu successfully."
