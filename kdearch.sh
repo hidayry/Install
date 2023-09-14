@@ -2,6 +2,12 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
+#update mirrorlist
+sudo pacman -S reflector || { echo "Error: Failed to install reflector"; exit 1; }
+reflector -c ID,SG -l 7 -f 7 -p https --sort rate  --save /etc/pacman.d/mirrorlist || { echo "Error: Failed to update mirrorlist"; exit 1; }
+sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
+echo "Update successfully."
+
 # Run pacman
 sudo pacman -S plasma plasma-wayland-session sddm packagekit-qt5 Ark dolphin dolphin-pligins filelight kate kompare kdegraphics-thumbnailers kdegraphics-thumbnailers kfind partitionmanager kwrite kio-extra kio-admin konsole || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
