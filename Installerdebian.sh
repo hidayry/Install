@@ -2,10 +2,10 @@
 
 set -e # Exit if any command fails
 
-echo "=== This script will install all dependecies and app please wait until finish ===="
+echo "=== This script will install all dependecies and applications please wait until finish ==="
 
 # Prompt the user to continue
-read -p "Are you sure you want to continue? (y/yes or n/no): " answer
+read -r -p "Are you sure you want to continue? (y/yes or n/no): " answer
 
 # Convert the answer to lowercase for comparison
 answer=${answer,,}

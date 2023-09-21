@@ -2,6 +2,25 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
+echo "=== This script will install all dependecies and applications please wait until finish ==="
+
+# Prompt the user to continue
+read -r -p "Are you sure you want to continue? (y/yes or n/no): " answer
+
+# Convert the answer to lowercase for comparison
+answer=${answer,,}
+
+# Check if the answer is 'y' or 'yes'
+if [[ $answer == "y" || $answer == "yes" ]]; then
+    echo "We will begin Installation..."
+    # Add your commands here
+else
+    echo "Exiting the script."
+    exit 0
+fi
+
+# Rest of your script...
+
 #update mirrorlist
 sudo pacman -S --needed --noconfirm reflector || {
 	echo "Error: Failed to install reflector"
