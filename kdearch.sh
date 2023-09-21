@@ -2,6 +2,25 @@
 
 set -e # Exit immediately if a command exits with a non-zero status.
 
+logo="                   (                    
+                (((((((((               
+           .((((((((((((((///,          
+          ((((((((((((((((/////         
+         *(((((((((@@@(@#(/////,        
+         *((((&@@@@@@@@@@@%@(&//        
+         *(@@@@@@@@@@@@@@@@@@@@/        
+         *@@@@@@@@@@@@@@@@@@@@@#        
+           @@*****(@@@#@@/***&&         
+           *&&*/&&&&&&&&%/*/&&          
+           *&%&&&&&&#(&&&&&*&&&         
+             &/%&(&&&&#&(//&            
+              &&/////////#&             
+               &&&&&&&&&&&              
+                (                       
+               (((((((((//"
+
+echo "$logo"
+
 echo "=== This script will install all dependecies and applications please wait until finish ==="
 
 # Prompt the user to continue
