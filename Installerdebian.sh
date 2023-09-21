@@ -2,6 +2,25 @@
 
 set -e # Exit if any command fails
 
+echo "=== This script will install all dependecies and app please wait until finish ===="
+
+# Prompt the user to continue
+read -p "Are you sure you want to continue? (y/yes or n/no): " answer
+
+# Convert the answer to lowercase for comparison
+answer=${answer,,}
+
+# Check if the answer is 'y' or 'yes'
+if [[ $answer == "y" || $answer == "yes" ]]; then
+    echo "We will begin Installation..."
+    # Add your commands here
+else
+    echo "Exiting the script."
+    exit 0
+fi
+
+# Rest of your script...
+
 #update repo
 sudo apt update && sudo apt upgrade || {
 	echo "Error: Failed to update"
