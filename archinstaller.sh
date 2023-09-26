@@ -63,7 +63,7 @@ sudo pacman -S --needed --noconfirm xorg || {
 echo "Installation xorg successfully."
 
 #install bspwm
-sudo pacman -S --needed --noconfirm pacman-contrib bspwm polybar sxhkd alacritty brightnessctl lxapperience gnome-themes-extra wget dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany lightdm lightdm-slick-greeter ranger mpc picom xdotool feh ueberzug maim pamixer libwebp xdg-user-dirs webp-pixbuf-loader xorg-xprop xorg-xkill physlock ttf-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo thunar thunar-volman thunar-archive-plugin gvfs gvfs-mtp gvfs-ntfs engrampa tint2 dmenu pulseaudio pulseaudio-alsa duf firefox xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk neovim tumbler ntfs-3g nm-connection-editor duf pavucontrol gpick neofetch network-manager-applet ncdu btop grub-btrfs || {
+sudo pacman -S --needed --noconfirm pacman-contrib bspwm polybar sxhkd alacritty brightnessctl lxapperience gnome-themes-extra wget dunst rofi bat eza jq polkit-gnome git playerctl mpd ncmpcpp geany lightdm lightdm-slick-greeter ranger mpc picom xdotool feh ueberzug maim pamixer libwebp xdg-user-dirs webp-pixbuf-loader xorg-xprop xorg-xkill physlock ttf-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo thunar thunar-volman thunar-archive-plugin gvfs gvfs-mtp gvfs-ntfs engrampa tint2 dmenu pulseaudio pulseaudio-alsa duf firefox xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk neovim tumbler ntfs-3g nm-connection-editor duf pavucontrol gpick neofetch network-manager-applet ncdu btop grub-btrfs || {
 	echo "Error: Failed to install bspwm"
 	exit 1
 }
