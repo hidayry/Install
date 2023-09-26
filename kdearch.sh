@@ -47,7 +47,7 @@ sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
 echo "Update successfully."
 
 # Run pacman
-sudo pacman -S --needed --noconfirm plasma plasma-wayland-session sddm packagekit-qt5 ark dolphin dolphin-plugins filelight kate kompare kdegraphics-thumbnailers kdegraphics-thumbnailers kfind partitionmanager kwrite kio-extras kio-admin konsole || { echo "Error: Failed to install"; exit 1; }
+sudo pacman -S --needed --noconfirm plasma plasma-wayland-session sddm packagekit-qt5 ark dolphin dolphin-plugins filelight kate kompare kdegraphics-thumbnailers kfind partitionmanager kwrite kio-extras kio-admin konsole || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
 
 # enable lightdm
