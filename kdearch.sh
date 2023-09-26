@@ -50,7 +50,7 @@ echo "Update successfully."
 sudo pacman -S --needed --noconfirm plasma plasma-wayland-session sddm packagekit-qt5 ark dolphin dolphin-plugins filelight kate kompare kdegraphics-thumbnailers kfind partitionmanager kwrite kio-extras kio-admin konsole || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
 
-# enable lightdm
+# enable sddm
 sudo systemctl enable sddm || { echo "Error: Failed to enable sddm"; exit 1; }
 echo "Installation sddm successfully."
 
