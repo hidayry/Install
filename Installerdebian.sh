@@ -40,8 +40,22 @@ fi
 
 # Rest of your script...
 
+# Add the repository:
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+    | gpg --dearmor \
+    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+    | sudo tee /etc/apt/sources.list.d/vscodium.list
+
 #update repo
-sudo apt update && sudo apt upgrade || {
+sudo apt update || {
+	echo "Error: Failed to update"
+	exit 1
+}
+echo "Update successfully."
+
+sudo apt upgrade || {
 	echo "Error: Failed to update"
 	exit 1
 }
