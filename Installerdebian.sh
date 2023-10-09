@@ -75,7 +75,7 @@ sudo apt upgrade || {
 echo "Update successfully."
 
 #Run apt
-sudo apt install xorg wget alacritty dmenu luarocks lua5.3 liblua5.3-dev --yes || {
+sudo apt install xorg wireless-tools wget alacritty dmenu luarocks lua5.3 liblua5.3-dev --yes || {
 	echo "Error: Failed to install luarocks"
 	exit 1
 }
