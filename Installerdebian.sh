@@ -38,16 +38,20 @@ else
     exit 0
 fi
 
-# toucpad settings
-echo 'Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-        Option "Tapping" "on"
-EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
-
 # Rest of your script...
+
+# toucpad enable click touch
+sudo sh -c 'echo "Section \"InputClass\"
+        Identifier \"libinput touchpad catchall\"
+        MatchIsTouchpad \"on\"
+        MatchDevicePath \"/dev/input/event*\"
+        Driver \"libinput\"
+        Option \"Tapping\" \"on\"
+EndSection" >> /etc/X11/xorg.conf.d/40-libinput.conf' || {
+	echo "Error: Failed to add touchpad enable click touch"
+	exit 1
+}
+echo "Successfully add touchpad enable click touch"
 
 # Add the repository:
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
