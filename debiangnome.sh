@@ -41,7 +41,7 @@ fi
 # Rest of your script...
 
 #Run apt
-sudo apt install gnome-core lollypop mpv vlc gnome-photos gthumb file-roller nautilus-admin nautilus-image-converter gnome-tweaks dconf-editor gnome-shell-extension-manager || { echo "Error: Failed to install"; exit 1; }
+sudo apt install gnome-core lollypop celluloid cheese rawtherapee gnome-photos gthumb file-roller nautilus-admin nautilus-image-converter gnome-tweaks dconf-editor gnome-shell-extension-manager || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully." 
 
 #enable gdm
