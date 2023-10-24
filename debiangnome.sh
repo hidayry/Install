@@ -42,7 +42,11 @@ fi
 
 #Run apt
 sudo apt install gnome-core lollypop celluloid cheese rawtherapee gnome-photos gthumb file-roller nautilus-admin nautilus-image-converter gnome-tweaks dconf-editor gnome-shell-extension-manager || { echo "Error: Failed to install"; exit 1; }
-echo "Installation successfully." 
+echo "Installation successfully."
+
+#Remove
+sudo apt purge --autoremove gnome-contacts gnome-browser-connector || { echo "Error: Failed to autoremove"; exit 1; }
+echo"Autoremove successfully"
 
 #enable gdm
 sudo systemctl enable gdm || { echo "Error: Failed to enable gdm"; exit 1; }
