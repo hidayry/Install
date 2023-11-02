@@ -50,6 +50,22 @@ echo "Update successfully."
 sudo pacman -S --needed xorg-server xf86-video-intel xf86-video-fbdev xf86-video-vesa mpd mpc ncmpcpp nemo ttf-roboto polkit-gnome scrot alsa-utils brightnessctl jq playerctl xdotool xdo redshift lxappearance-gtk3 python-mutagen dmenu rofi picom firefox gvfs gvfs-mtp gvfs-ntfs || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
 
+# toucpad enable click touch
+sudo sh -c 'echo "Section \"InputClass\"
+        Identifier \"libinput touchpad catchall\"
+        MatchIsTouchpad \"on\"
+        MatchDevicePath \"/dev/input/event*\"
+        Driver \"libinput\"
+        Option \"Tapping\" \"on\"
+        Option \"ScrollMethod\" \"twofinger\"
+        Option \"HorizontalScrolling\" \"on\"
+        Option \"DisableWhileTyping\" \"on\"
+EndSection" >> /etc/X11/xorg.conf.d/40-libinput.conf' || {
+	echo "Error: Failed to add touchpad enable click touch"
+	exit 1
+}
+echo "Successfully add touchpad enable click touch"
+
 # enable lightdm
 sudo systemctl enable lightdm || { echo "Error: Failed to enable lightdm"; exit 1; }
 echo "enable lightdm successfully."
