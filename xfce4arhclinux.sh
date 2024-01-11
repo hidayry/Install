@@ -45,9 +45,9 @@ sudo pacman -S --needed --noconfirm reflector || { echo "Error: Failed to instal
 reflector -c ID,SG -l 7 -f 7 -p https --sort rate  --save /etc/pacman.d/mirrorlist || { echo "Error: Failed to update mirrorlist"; exit 1; }
 sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
 echo "Update successfully."
-
+7
 #Run pacman
-sudo pacman -S --needed --noconfirm xfce4 xfce4-goodies lightdm lightdm-slick-greeter pulseaudio pulseaudio-alsa pulseaudio-jack libcanberra pavucontrol firefox gvfs gvfs-mtp gvfs-ntfs || { echo "Error: Failed to install"; exit 1; }
+sudo pacman -S --needed --noconfirm xfce4 xfce4-goodies lightdm lightdm-slick-greeter pipewire pipewire-pulse pipewire-alsa pipewire-audio gst-plugin-pipewire libcanberra pavucontrol firefox gvfs gvfs-mtp gvfs-nfs || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
 
 # enable lightdm
