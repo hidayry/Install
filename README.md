@@ -2,7 +2,7 @@
 
 I use this for minimal instalation in Debian Netinstall and Archlinux
 
-now just use bspwm and awesomewm
+now just use sway and xfce4
 _______________________
 
 ✨✨✨✨

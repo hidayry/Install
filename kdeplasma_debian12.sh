@@ -41,7 +41,7 @@ fi
 # Rest of your script...
 
 # Run apt
-sudo apt install kde-plasma-desktop okular kde-spectacle ark gwenview sweeper filelight kcharselect digikam krusader kompare kget || { echo "Error: Failed to install"; exit 1; }
+sudo apt install kde-plasma-desktop kdeconnect okular kde-spectacle ark dolphin-plugins gwenview filelight pipewire pipewire-alsa pipewire-audio pipewire-bin pipewire-pulse wireplumber digikam || { echo "Error: Failed to install"; exit 1; }
 echo "Installation successfully."
 
 # enable sddm
