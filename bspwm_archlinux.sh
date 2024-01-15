@@ -56,14 +56,14 @@ sudo pacman -Syy || {
 echo "Update successfully."
 
 #install xorg
-sudo pacman -S --needed --noconfirm xorg || {
+sudo pacman -S --needed --noconfirm xorg-server || {
 	echo "Error: Failed to install xorg"
 	exit 1
 }
 echo "Installation xorg successfully."
 
 #install bspwm
-sudo pacman -S --needed --noconfirm pacman-contrib bspwm polybar sxhkd alacritty brightnessctl lxapperience gnome-themes-extra wget dunst rofi bat eza jq polkit-gnome git playerctl mpd ncmpcpp geany lightdm lightdm-slick-greeter ranger mpc picom xdotool feh ueberzug maim pamixer libwebp xdg-user-dirs webp-pixbuf-loader xorg-xprop xorg-xkill physlock ttf-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo thunar thunar-volman thunar-archive-plugin gvfs gvfs-mtp gvfs-ntfs engrampa tint2 dmenu pulseaudio pulseaudio-alsa duf firefox xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk neovim tumbler ntfs-3g nm-connection-editor duf pavucontrol gpick neofetch network-manager-applet ncdu btop grub-btrfs || {
+sudo pacman -S --needed --noconfirm pacman-contrib bspwm polybar sxhkd alacritty brightnessctl lxappearance-gtk3 gnome-themes-extra wget dunst rofi bat eza jq polkit-gnome git playerctl mpd ncmpcpp geany lightdm lightdm-slick-greeter mpc picom xdotool feh ueberzug maim pamixer libwebp xdg-user-dirs webp-pixbuf-loader xorg-xprop xorg-xkill physlock ttf-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo thunar thunar-volman thunar-archive-plugin gvfs gvfs-mtp gvfs-nfs engrampa tint2 dmenu duf firefox xdo jgmenu redshift xautolock fzf ytfzf yt-dlp gawk neovim tumbler ntfs-3g nm-connection-editor duf pavucontrol gpick neofetch network-manager-applet ncdu btop grub-btrfs || {
 	echo "Error: Failed to install bspwm"
 	exit 1
 }
@@ -123,7 +123,7 @@ makepkg -si || {
 echo "Installation yay successfully."
 
 #install app from AUR
-yay -S --needed --noconfirm --asdeps awesome-git greenclip networkmanager_dmenu-git i3lock-color tdrop bsp-layout xqp ps_mem || {
+yay -S --needed --noconfirm --asdeps greenclip networkmanager_dmenu-git i3lock-color tdrop bsp-layout xqp ps_mem || {
 	echo "Error: Failed to install app from AUR"
 	exit 1
 }

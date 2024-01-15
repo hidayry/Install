@@ -45,14 +45,18 @@ sudo pacman -S --needed --noconfirm reflector || { echo "Error: Failed to instal
 reflector -c ID,SG -l 7 -f 7 -p https --sort rate  --save /etc/pacman.d/mirrorlist || { echo "Error: Failed to update mirrorlist"; exit 1; }
 sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
 echo "Update successfully."
-
+7
 #Run pacman
-sudo pacman -S --needed --noconfirm gnome pipewire pipewire-pulse pipewire-alsa pipewire-audio wireplumber gst-plugin-pipewire pipewire-jack gnome-terminal gnome-tweaks dconf-editor || { echo "Error: Failed to install"; exit 1; }
-echo "Installation successfully." 
+sudo pacman -S --needed --noconfirm xfce4 xfce4-goodies lightdm lightdm-slick-greeter pacman-contrib pipewire pipewire-pulse pipewire-alsa pipewire-audio gst-plugin-pipewire libpipewire libcanberra pavucontrol firefox thunar-volman thunar-archive-plugin gvfs gvfs-mtp gvfs-nfs || { echo "Error: Failed to install"; exit 1; }
+echo "Installation successfully."
 
-#enable gdm
-sudo systemctl enable gdm || { echo "Error: Failed to enable gdm"; exit 1; }
-echo "Installation gdm successfully."
+# enable lightdm
+sudo systemctl enable lightdm || { echo "Error: Failed to enable lightdm"; exit 1; }
+echo "enable lightdm successfully."
+
+#Lightdm :
+echo "greeter-session=lightdm-slick-greeter" | sudo tee -a /etc/lightdm/lightdm.conf || { echo "Error: Failed to set lightdm"; exit 1; }
+echo "Installation lightdm successfully."
 
 #yay
 sudo pacman -S --needed --noconfirm git base-devel || { echo "Error: Failed to install yay"; exit 1; }
@@ -61,6 +65,3 @@ cd yay-bin || { echo "Error: Failed to cd yay-bin"; exit 1; }
 makepkg -si || { echo "Error: Failed to make yay-bin"; exit 1; }
 echo "Installation yay successfully."
 
-#yay 
-yay -S --needed --noconfirm --asdeps extension-manager || { echo "Error: Failed to install extension-manager"; exit 1; }
-echo "Installation extension-manager successfully."

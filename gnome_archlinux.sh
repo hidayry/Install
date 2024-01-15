@@ -46,17 +46,21 @@ reflector -c ID,SG -l 7 -f 7 -p https --sort rate  --save /etc/pacman.d/mirrorli
 sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
 echo "Update successfully."
 
-# Run pacman
-sudo pacman -S --needed --noconfirm plasma plasma-wayland-session sddm packagekit-qt5 ark dolphin dolphin-plugins filelight kate kompare kdegraphics-thumbnailers kdesdk-thumbnailers kfind partitionmanager kwrite kio-extras kio-admin konsole || { echo "Error: Failed to install"; exit 1; }
-echo "Installation successfully."
+#Run pacman
+sudo pacman -S --needed --noconfirm gnome gvfs gvfs-mtp gvfs-nfs pacman-contrib pipewire pipewire-pulse pipewire-alsa pipewire-audio wireplumber gst-plugin-pipewire gnome-terminal gnome-tweaks dconf-editor || { echo "Error: Failed to install"; exit 1; }
+echo "Installation successfully." 
 
-# enable sddm
-sudo systemctl enable sddm || { echo "Error: Failed to enable sddm"; exit 1; }
-echo "Installation sddm successfully."
+#enable gdm
+sudo systemctl enable gdm || { echo "Error: Failed to enable gdm"; exit 1; }
+echo "Installation gdm successfully."
 
-# yay
+#yay
 sudo pacman -S --needed --noconfirm git base-devel || { echo "Error: Failed to install yay"; exit 1; }
 git clone https://aur.archlinux.org/yay-bin.git || { echo "Error: Failed to clone yay-bin"; exit 1; }
 cd yay-bin || { echo "Error: Failed to cd yay-bin"; exit 1; }
 makepkg -si || { echo "Error: Failed to make yay-bin"; exit 1; }
 echo "Installation yay successfully."
+
+#yay 
+yay -S --needed --noconfirm --asdeps extension-manager || { echo "Error: Failed to install extension-manager"; exit 1; }
+echo "Installation extension-manager successfully."

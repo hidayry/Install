@@ -47,7 +47,8 @@ sudo pacman -Syy || { echo "Error: Failed to update"; exit 1; }
 echo "Update successfully."
 
 #Run pacman
-sudo pacman -S --needed xorg-server xf86-video-intel xf86-video-fbdev xf86-video-vesa mpd mpc ncmpcpp nemo ttf-roboto polkit-gnome scrot alsa-utils brightnessctl jq playerctl xdotool xdo redshift lxappearance-gtk3 python-mutagen dmenu rofi picom firefox gvfs gvfs-mtp gvfs-ntfs || { echo "Error: Failed to install"; exit 1; }
+sudo pacman -S --needed xorg-server mpd mpc ncmpcpp nemo ttf-roboto polkit-gnome scrot alsa-utils brightnessctl jq playerctl xdotool xdo redshift lxappearance-gtk3 python-mutagen dmenu rofi picom pipewire pipewire-pulse pipewire-alsa pipewire-audio gst-plugin-pipewire pacman-contrib firefox gvfs gvfs-mtp gvfs-nfs || { echo "Error: Failed to install"; exit 1; }
+
 echo "Installation successfully."
 
 # toucpad enable click touch
